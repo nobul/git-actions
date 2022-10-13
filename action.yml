@@ -1,4 +1,4 @@
-name: "Setup environment"
+name: "Setup Nobul environment"
 description: "Authenticate and install packages"
 inputs:
   NOBUL_NPM_TOKEN:
