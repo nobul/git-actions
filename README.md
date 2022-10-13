@@ -4,23 +4,29 @@ Github action to setup environment
 
 ## Inputs
 
-## `NOBUL_NPM_TOKEN`
+## `NPM_TOKEN`
 
-**Required** Github npm token for @nobul registry
+**Required** Github npm registry token
 
-## `NODE`
+## `NPM_REGISTRY_ORG`
+
+**Required** Github npm registry org
+
+## `NODE_VERSION`
+
+**Required** Node version to install
+
+## `INSTALL_NODE_DEPS`
 
 Flag to install npm dependencies
-
-## `always_auth`
-
-**Required** Force npm to always require authentication when accessing the registry.
 
 ## Example usage
 
 ```yml
 uses: nobul/setup-env@v1.0.0
 with:
-  NOBUL_NPM_TOKEN: NPM_TOKEN
-  NODE: true
+  NPM_TOKEN: NPM_TOKEN
+  NPM_REGISTRY_ORG: NPM_ORG
+  NODE_VERSION: 17.1.0
+  INSTALL_NODE_DEPS: false
 ```
