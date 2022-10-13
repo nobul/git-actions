@@ -1,5 +1,8 @@
 name: "Setup Nobul environment"
 description: "Authenticate and install packages"
+branding:
+  icon: "terminal"
+  color: "blue"
 inputs:
   NOBUL_NPM_TOKEN:
     description: "Github npm token for @nobul registry"
