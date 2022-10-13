@@ -1,0 +1,28 @@
+name: "Setup environment"
+description: "Authenticate and install packages"
+inputs:
+  NOBUL_NPM_TOKEN:
+    description: "Github npm token for @nobul registry"
+    required: true
+  NODE:
+    description: "Flag to install npm dependencies"
+    required: false
+    default: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set node version
+      uses: actions/setup-node@v3
+      with:
+        node-version: lts/fermium
+        cache: yarn
+    - name: Create .npmrc
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ inputs.NOBUL_NPM_TOKEN }}" > .npmrc
+        echo "@nobul:registry=https://npm.pkg.github.com/" >> .npmrc
+        echo "always-auth=true" >> .npmrc
+      shell: bash
+    - name: Install npm dependencies
+      if: ${{ inputs.NODE == 'true' }}
+      run: yarn install --immutable
+      shell: bash
