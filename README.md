@@ -1,6 +1,6 @@
 # nobul/setup-env
 
-Github action to setup environment
+Github action to setup environment for github actions runners
 
 ## Inputs
 
