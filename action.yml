@@ -1,4 +1,4 @@
-name: "Setup environment with Node + Github NPM"
+name: "Setup environment with Node + Python + Github NPM"
 description: "Authenticate and install packages"
 branding:
   icon: "terminal"
@@ -12,19 +12,30 @@ inputs:
     required: true
   NODE_VERSION:
     description: "Node version"
-    required: true
-  INSTALL_NODE_DEPS:
-    description: "Flag to install npm dependencies"
     required: false
-    default: true
+  PYTHON_VERSION:
+    description: "Python version"
+    required: false
 runs:
   using: "composite"
   steps:
     - name: Set node version
+      if: ${{ inputs.NODE_VERSION }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.NODE_VERSION }}
         cache: yarn
+    - name: Set up python
+      if: ${{ inputs.PYTHON_VERSION }}
+      id: setup-python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9.9
+    - name: Install Poetry
+      if: ${{ inputs.PYTHON_VERSION }}
+      uses: snok/install-poetry@v1
+      with:
+        virtualenvs-create: false
     - name: Create .npmrc
       run: |
         echo "//npm.pkg.github.com/:_authToken=${{ inputs.NPM_TOKEN }}" > .npmrc
@@ -32,6 +43,6 @@ runs:
         echo "always-auth=true" >> .npmrc
       shell: bash
     - name: Install npm dependencies
-      if: ${{ inputs.INSTALL_NODE_DEPS == 'true' }}
+      if: ${{ inputs.NODE_VERSION }}
       run: yarn install --immutable
       shell: bash

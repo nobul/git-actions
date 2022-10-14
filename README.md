@@ -14,11 +14,11 @@ Github action to setup environment for github actions runners
 
 ## `NODE_VERSION`
 
-**Required** Node version to install
+Node version to install
 
-## `INSTALL_NODE_DEPS`
+## `PYTHON_VERSION`
 
-Flag to install npm dependencies
+Python version to install
 
 ## Example usage
 
@@ -28,5 +28,5 @@ with:
   NPM_TOKEN: NPM_TOKEN
   NPM_REGISTRY_ORG: NPM_ORG
   NODE_VERSION: 17.1.0
-  INSTALL_NODE_DEPS: false
+  PYTHON_VERSION: 3.9.9
 ```
