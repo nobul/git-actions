@@ -23,7 +23,7 @@ runs:
     - name: Set node version
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ input.NODE_VERSION }}
+        node-version: ${{ inputs.NODE_VERSION }}
         cache: yarn
     - name: Create .npmrc
       run: |
