@@ -27,6 +27,8 @@ uses: nobul/setup-env@v1.0.0
 with:
   NPM_TOKEN: NPM_TOKEN
   NPM_REGISTRY_ORG: NPM_ORG
-  NODE_VERSION: 17.1.0
+  NODE: true
+  NODE_VERSION_FILE: .nvmrc
+  NODE_CACHE: yarn
   PYTHON_VERSION: 3.9.9
 ```
