@@ -10,9 +10,17 @@ inputs:
   NPM_REGISTRY_ORG:
     description: "Github npm registry org"
     required: true
-  NODE_VERSION:
-    description: "Node version"
+  NODE:
+    description: "Install Node"
     required: false
+  NODE_VERSION_FILE:
+    description: "Node version file"
+    required: false
+    default: .nvmrc
+  NODE_CACHE:
+    description: "Node cache"
+    required: false
+    default: yarn
   PYTHON_VERSION:
     description: "Python version"
     required: false
@@ -20,11 +28,11 @@ runs:
   using: "composite"
   steps:
     - name: Set node version
-      if: ${{ inputs.NODE_VERSION }}
+      if: ${{ inputs.NODE }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ inputs.NODE_VERSION }}
-        cache: yarn
+        node-version-file: ${{ inputs.NODE_VERSION_FILE }}
+        cache: ${{ inputs.NODE_CACHE }}
     - name: Set up python
       if: ${{ inputs.PYTHON_VERSION }}
       id: setup-python
@@ -43,6 +51,6 @@ runs:
         echo "always-auth=true" >> .npmrc
       shell: bash
     - name: Install npm dependencies
-      if: ${{ inputs.NODE_VERSION }}
-      run: yarn install --immutable
+      if: ${{ inputs.NODE }}
+      run: yarn install --immutable --frozen-lockfile
       shell: bash
