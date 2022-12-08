@@ -38,7 +38,7 @@ runs:
       id: setup-python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9.9
+        python-version: ${{ inputs.PYTHON_VERSION }}
     - name: Install Poetry
       if: ${{ inputs.PYTHON_VERSION }}
       uses: snok/install-poetry@v1
