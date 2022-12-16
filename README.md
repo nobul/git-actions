@@ -29,6 +29,5 @@ with:
   NPM_REGISTRY_ORG: NPM_ORG
   NODE: true
   NODE_VERSION_FILE: .nvmrc
-  NODE_CACHE: yarn
   PYTHON_VERSION: 3.9.9
 ```

@@ -17,10 +17,6 @@ inputs:
     description: "Node version file"
     required: false
     default: .nvmrc
-  NODE_CACHE:
-    description: "Node cache"
-    required: false
-    default: yarn
   PYTHON_VERSION:
     description: "Python version"
     required: false
@@ -32,7 +28,6 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version-file: ${{ inputs.NODE_VERSION_FILE }}
-        cache: ${{ inputs.NODE_CACHE }}
     - name: Set up python
       if: ${{ inputs.PYTHON_VERSION }}
       id: setup-python
