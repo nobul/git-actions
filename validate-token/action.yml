@@ -1,0 +1,14 @@
+name: "Check push token"
+description: "Compare tokens"
+inputs:
+  env:
+    required: true
+  input:
+    required: false
+  token:
+    required: false
+  ref:
+    required: true
+runs:
+  using: "node16"
+  main: "index.js"
