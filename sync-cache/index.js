@@ -41,8 +41,8 @@ const main = async () => {
       }
 
       core.info(`output: ${output}`);
-      core.saveState("CAN_PROCEED", output);
-      core.setOutput("CAN_PROCEED", output);
+      core.saveState("canProceed", output);
+      core.setOutput("proceed", output);
     } else {
       core.info(`No cache restore needed`);
     }

@@ -2,9 +2,10 @@ const core = require("@actions/core");
 
 const cleanup = async () => {
   try {
-    const canProceed = core.getState("CAN_PROCEED");
+    const canProceed = core.getState("canProceed");
+    const restore = core.getInput("restore") || false;
 
-    if (canProceed) {
+    if (!restore || canProceed) {
       const cache = require("@actions/cache");
 
       const cacheFile = core.getInput("cache-file");
