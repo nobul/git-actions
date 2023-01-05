@@ -1,0 +1,11 @@
+{
+  "name": "@nobul/validate-token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "OleksiiKachan",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
+}
