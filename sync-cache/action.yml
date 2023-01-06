@@ -11,6 +11,10 @@ inputs:
     required: true
   restore:
     required: false
+  token:
+    required: false
+  repo:
+    required: false
 
 runs:
   using: "node16"
