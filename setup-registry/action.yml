@@ -1,0 +1,21 @@
+name: "Setup Github NPM access"
+description: "Authenticate and install packages"
+branding:
+  icon: "terminal"
+  color: "blue"
+inputs:
+  NPM_TOKEN:
+    description: "Github npm registry token"
+    required: true
+  NPM_REGISTRY_ORG:
+    description: "Github npm registry org"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Create .npmrc
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ inputs.NPM_TOKEN }}" > .npmrc
+        echo "@${{ inputs.NPM_REGISTRY_ORG }}:registry=https://npm.pkg.github.com/" >> .npmrc
+        echo "always-auth=true" >> .npmrc
+      shell: bash
